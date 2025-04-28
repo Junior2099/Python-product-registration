@@ -1,0 +1,29 @@
+{% extends 'minhaapp/base.html' %}
+
+{% block title %}{{ produto.nome }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="card-title">{{ produto.nome }}</h1>
+            <a href="{% url 'lista_produtos' %}" class="btn btn-outline-secondary">Voltar</a>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <p><strong>Preço:</strong> R$ {{ produto.preco }}</p>
+                <p><strong>Estoque:</strong> {{ produto.estoque }} unidades</p>
+            </div>
+            <div class="col-md-6">
+                <h5>Descrição:</h5>
+                <p>{{ produto.descricao }}</p>
+                <div class="mt-4">
+                    <a href="{% url 'remover_produto' produto.id %}" class="btn btn-danger">Remover Produto</a>
+                    <a href="{% url 'lista_produtos' %}" class="btn btn-secondary">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

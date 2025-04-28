@@ -1,0 +1,60 @@
+{% extends 'minhaapp/base.html' %}
+
+{% block title %}Cadastrar Produto{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">Cadastrar Novo Produto</h1>
+        
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="id_nome" class="form-label">Nome</label>
+                {{ form.nome }}
+                {% if form.nome.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.nome.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_preco" class="form-label">Preço</label>
+                {{ form.preco }}
+                {% if form.preco.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.preco.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_descricao" class="form-label">Descrição</label>
+                {{ form.descricao }}
+                {% if form.descricao.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.descricao.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_estoque" class="form-label">Estoque</label>
+                {{ form.estoque }}
+                {% if form.estoque.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.estoque.errors }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="{% url 'lista_produtos' %}" class="btn btn-secondary me-md-2">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
